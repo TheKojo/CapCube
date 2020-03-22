@@ -38,7 +38,7 @@ namespace CapCube
         public void SetPosition(float X, float Y)
         {
             SpecterSprite.SetPosition(X, Y);
-            BattlerGaugeSprite.SetPosition(X-28, Y + 8);
+            BattlerGaugeSprite.SetPosition(X - 28, Y + 8);
             ShadowSprite.SetPosition(X, Y);
         }
 
@@ -47,7 +47,18 @@ namespace CapCube
             SpecterSprite.SetEffect(SpriteEffects.FlipHorizontally);
         }
 
-
-
+        public void ChangeState(CCSpecterState.State newState)
+        {
+            SpecterSprite.SetTexture("Graphics/Battlers/" + Specter.Species + "_" + newState);
+            switch (newState)
+            {
+                case CCSpecterState.State.Stand:
+                    SpecterSprite.TimeToUpdate = 2;
+                    break;
+                case CCSpecterState.State.Walk:
+                    SpecterSprite.TimeToUpdate = 0;
+                    break;
+            }
+        }
     }
 }

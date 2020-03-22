@@ -11,6 +11,7 @@ namespace CapCube
         public enum State
         {
             Stand,
+            Walk,
             CloseAttack,
             FarAttack,
             Hurt,

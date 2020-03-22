@@ -37,6 +37,7 @@ namespace CapCube
             }
         }
 
+
         public void Update()
         {
             if (isMovingX)
@@ -61,7 +62,13 @@ namespace CapCube
                     movementCount = 0;
                 }
             }
-            
+
+            BattlerSprite.Update();
+        }
+
+        public void Draw()
+        {
+            BattlerSprite.Draw();
         }
 
         public void Move(int XDistance, int YDistance, CCMovement.Movement movementType = CCMovement.Movement.Normal)
@@ -87,18 +94,13 @@ namespace CapCube
                         SetTilePosition((int) TilePos.Y + YDistance, (int) TilePos.X + XDistance);
                         break;
                 }
+                BattlerSprite.ChangeState(CCSpecterState.State.Walk);
             }
         }
 
         public bool IsOpponent()
         {
             return BattlerIndex > 0;
-        }
-
-
-        public void Draw()
-        {
-            BattlerSprite.Draw();
         }
 
         public void SetTilePosition(int row, int col)
@@ -108,6 +110,7 @@ namespace CapCube
             Vector2 newPos = GetRealPos(TilePos);
             BattlerSprite.SetPosition(newPos.X, newPos.Y);
             IsMoving = false;
+            BattlerSprite.ChangeState(CCSpecterState.State.Stand);
         }
 
         public Vector2 GetRealPos(Vector2 tilePos)

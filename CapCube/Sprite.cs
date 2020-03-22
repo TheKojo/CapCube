@@ -21,20 +21,52 @@ namespace CapCube
         public Color Color = Color.White;
         public SpriteEffects Effect = SpriteEffects.None;
         public float LayerDepth = 0;
+        public int FramesCount = 0;
+        private int _frameCounter = 0;
+        public bool IsAnimated = false;
+        public int TimeToUpdate = 0; //the higher this is, the slower the animation
+        private int _updateCounter = 0;
 
         public Sprite()
         {
 
         }
 
-        public Sprite(string filename)
+        public Sprite(string filename, bool animated = false)
         {
             Texture = GameUtils.Content.Load<Texture2D>(filename);
-            SourceRectangle = new Rectangle(0, 0, Texture.Width, Texture.Height);
+            IsAnimated = animated;
+            if (IsAnimated)
+            {
+                SourceRectangle = new Rectangle(0, 0, Texture.Height, Texture.Height);
+                FramesCount = Texture.Width / Texture.Height;
+            }
+            else
+            {
+                SourceRectangle = new Rectangle(0, 0, Texture.Width, Texture.Height);
+                FramesCount = 1;
+            }
+            
         }
 
         public virtual void Update()
         {
+            if (IsAnimated)
+            {
+                if (_updateCounter == TimeToUpdate) {
+                    _updateCounter = 0;
+                    _frameCounter++;
+                    if (_frameCounter == FramesCount)
+                    {
+                        _frameCounter = 0;
+                    }
+                    SourceRectangle.X = _frameCounter * SourceRectangle.Width;
+                }
+                else
+                {
+                    _updateCounter++;
+                }
+            }
         }
 
         public virtual void Draw()
@@ -45,6 +77,18 @@ namespace CapCube
         public void SetTexture(string filename)
         {
             Texture = GameUtils.Content.Load<Texture2D>(filename);
+            if (IsAnimated)
+            {
+                SourceRectangle = new Rectangle(0, 0, Texture.Height, Texture.Height);
+                FramesCount = Texture.Width / Texture.Height;
+            }
+            else
+            {
+                SourceRectangle = new Rectangle(0, 0, Texture.Width, Texture.Height);
+                FramesCount = 1;
+            }
+            _updateCounter = 0;
+            _frameCounter = 0;
         }
 
         public virtual void SetPosition(float x, float y)
@@ -113,6 +157,20 @@ namespace CapCube
         public void SetEffect(SpriteEffects effect)
         {
             Effect = effect;
+        }
+
+        public void SetSourceRectangle(Rectangle frameRect, bool animate = false)
+        {
+            SourceRectangle = frameRect;
+            IsAnimated = animate;
+            if (IsAnimated)
+            {
+                FramesCount = Texture.Width / Texture.Height;
+            }
+            else
+            {
+                FramesCount = 1;
+            }
         }
     }
 }

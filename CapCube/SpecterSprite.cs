@@ -19,8 +19,9 @@ namespace CapCube
         {
             Specter = specter;
             SetTexture("Graphics/Battlers/" + Specter.Species + "_" + State);
-            SourceRectangle = new Rectangle(0, 0, Texture.Height, Texture.Height);
+            SetSourceRectangle(new Rectangle(0, 0, Texture.Height, Texture.Height), true);
             SetOrigin(SpriteOrigin.Bottom);
+            TimeToUpdate = 2;
         }
 
 
