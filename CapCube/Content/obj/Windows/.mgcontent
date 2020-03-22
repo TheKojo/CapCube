@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Data/specters.xml</File>
+    <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Fonts/FL.spritefont</File>
+    <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/Battlebacks/bg_grass.png</File>
+    <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/Battlebacks/bg_start.png</File>
+    <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/Battlebacks/bg_training.png</File>
+    <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/Battlebacks/bg_training2.png</File>
+    <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/Battlers/4_Stand.png</File>
+    <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/GUI/gauge.png</File>
+    <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/GUI/hpbars.png</File>
+    <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/GUI/ppbar.png</File>
+    <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/GUI/shadow.png</File>
+  </SourceFiles>
+  <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
+  </DestFiles>
+</SourceFileCollection>
