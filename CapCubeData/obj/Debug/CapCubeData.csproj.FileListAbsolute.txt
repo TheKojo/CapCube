@@ -1,6 +1,0 @@
-C:\Users\asant\source\repos\CapCube\CapCubeData\bin\Debug\CapCubeData.dll
-C:\Users\asant\source\repos\CapCube\CapCubeData\bin\Debug\CapCubeData.pdb
-C:\Users\asant\source\repos\CapCube\CapCubeData\obj\Debug\CapCubeData.csprojAssemblyReference.cache
-C:\Users\asant\source\repos\CapCube\CapCubeData\obj\Debug\CapCubeData.csproj.CoreCompileInputs.cache
-C:\Users\asant\source\repos\CapCube\CapCubeData\obj\Debug\CapCubeData.dll
-C:\Users\asant\source\repos\CapCube\CapCubeData\obj\Debug\CapCubeData.pdb
