@@ -10,14 +10,18 @@
     <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/Battlebacks/bg_start.png</File>
     <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/Battlebacks/bg_training.png</File>
     <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/Battlebacks/bg_training2.png</File>
+    <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/Battlers/4_AttackFar.png</File>
     <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/Battlers/4_Stand.png</File>
     <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/Battlers/4_Walk.png</File>
     <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/GUI/gauge.png</File>
     <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/GUI/hpbars.png</File>
     <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/GUI/ppbar.png</File>
     <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/GUI/shadow.png</File>
+    <File>C:/Users/asant/source/repos/CapCube/CapCube/Content/Graphics/SkillAnimations/projectile4.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />

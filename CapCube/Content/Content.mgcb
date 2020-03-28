@@ -74,6 +74,18 @@
 /processorParam:TextureFormat=Color
 /build:Graphics/Battlebacks/bg_training2.png
 
+#begin Graphics/Battlers/4_AttackFar.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/Battlers/4_AttackFar.png
+
 #begin Graphics/Battlers/4_Stand.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -145,4 +157,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Graphics/GUI/shadow.png
+
+#begin Graphics/SkillAnimations/projectile4.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/build:Graphics/SkillAnimations/projectile4.png
 

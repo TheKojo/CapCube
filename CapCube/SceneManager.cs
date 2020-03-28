@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
@@ -39,14 +40,14 @@ namespace CapCube
             ActiveScene = scene;
         }
 
-        static public void Update()
+        static public void Update(GameTime gameTime)
         {
-            ActiveScene.Update();
+            ActiveScene.Update(gameTime);
         }
 
-        static public void Draw()
+        static public void Draw(GameTime gameTime)
         {
-            ActiveScene.Draw();
+            ActiveScene.Draw(gameTime);
         }
 
         static public void StartWildBattle(int numOpponents)

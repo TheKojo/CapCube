@@ -61,6 +61,7 @@
     <Compile Include="Scene.cs" />
     <Compile Include="SceneManager.cs" />
     <Compile Include="SceneStart.cs" />
+    <Compile Include="Skill.cs" />
     <Compile Include="Specter.cs" />
     <Compile Include="SpecterSprite.cs" />
     <Compile Include="Sprite.cs" />

@@ -12,18 +12,21 @@ namespace CapCube
 {
     class Battler
     {
+        public Battle Battle;
         public Specter Specter;
-        BattlerSprite BattlerSprite;
-        int BattlerIndex;
+        public BattlerSprite BattlerSprite;
+        public int BattlerIndex;
         Vector2 TilePos = new Vector2(0, 0);
         public bool IsMoving = false;
         bool isMovingX = false;
         bool isMovingY = false;
         decimal movementCount = 0;
         Vector2 dir = new Vector2(0,0);
+        public bool IsAttacking = false;
 
-        public Battler(Specter specter, int index)
+        public Battler(Battle battle, Specter specter, int index)
         {
+            Battle = battle;
             Specter = specter;
             BattlerSprite = new BattlerSprite(specter);
             BattlerIndex = index;
@@ -38,11 +41,11 @@ namespace CapCube
         }
 
 
-        public void Update()
+        public void Update(GameTime gameTime)
         {
             if (isMovingX)
             {
-                movementCount += 8 * (decimal) dir.X;
+                movementCount += (decimal) 1.6 * (decimal) dir.X;
                 BattlerSprite.SetPosition(GetRealPos(TilePos).X + (float) movementCount, GetRealPos(TilePos).Y);
                 if (movementCount == 80 || movementCount == -80)
                 {
@@ -53,7 +56,7 @@ namespace CapCube
             }
             else if (isMovingY)
             {
-                movementCount += (decimal) (5.4 * dir.Y);
+                movementCount += (decimal) (1.08 * dir.Y);
                 BattlerSprite.SetPosition(GetRealPos(TilePos).X, GetRealPos(TilePos).Y + (float) movementCount);
                 if ((movementCount == 54) || (movementCount == -54))
                 {
@@ -63,17 +66,17 @@ namespace CapCube
                 }
             }
 
-            BattlerSprite.Update();
+            BattlerSprite.Update(gameTime);
         }
 
-        public void Draw()
+        public void Draw(GameTime gameTime)
         {
-            BattlerSprite.Draw();
+            BattlerSprite.Draw(gameTime);
         }
 
         public void Move(int XDistance, int YDistance, CCMovement.Movement movementType = CCMovement.Movement.Normal)
         {
-            if (!IsMoving && CanMoveTo(new Vector2(XDistance, YDistance))){
+            if (!IsMoving && CanMoveTo(new Vector2(XDistance, YDistance)) && !IsAttacking){
                 switch (movementType)
                 {
                     case (CCMovement.Movement.Normal):
@@ -158,6 +161,15 @@ namespace CapCube
             }
 
             return result;
+        }
+
+        public void BasicAttack()
+        {
+            if (!IsAttacking)
+            {
+                Skill attack = new Skill(this, 4);
+                Battle.AddSkill(attack);
+            }
         }
     }
 }

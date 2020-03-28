@@ -21,7 +21,7 @@ namespace CapCube
         }
 
 
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.Enter))
             {
@@ -32,7 +32,7 @@ namespace CapCube
             }
         }
 
-        public override void Draw()
+        public override void Draw(GameTime gameTime)
         {
             GameUtils.SpriteBatch.Draw(BackgroundTexture, new Vector2(0, 0), Color.White);
             GameUtils.SpriteBatch.DrawString(font, "Press Enter", new Vector2(100, 100), Color.White);

@@ -12,7 +12,6 @@ namespace CapCube
     class SpecterSprite : Sprite
     {
         Specter Specter;
-        public Sprite Sprite;
         public CCSpecterState.State State = CCSpecterState.State.Stand;
 
         public SpecterSprite(Specter specter)

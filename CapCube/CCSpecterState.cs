@@ -12,8 +12,8 @@ namespace CapCube
         {
             Stand,
             Walk,
-            CloseAttack,
-            FarAttack,
+            AttackClose,
+            AttackFar,
             Hurt,
             Faint,
         }

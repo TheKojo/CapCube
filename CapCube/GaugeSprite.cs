@@ -33,11 +33,11 @@ namespace CapCube
             PPSprite.SetPosition(X + 10, Y + 6);
         }
 
-        public override void Draw()
+        public override void Draw(GameTime gameTime)
         {
-            base.Draw();
-            HPSprite.Draw();
-            PPSprite.Draw();
+            base.Draw(gameTime);
+            HPSprite.Draw(gameTime);
+            PPSprite.Draw(gameTime);
         }
     }
 }

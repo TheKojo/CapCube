@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using System.Collections.Generic;
+using System;
 
 
 namespace CapCube
@@ -40,7 +41,8 @@ namespace CapCube
             Resolution.SetVirtualResolution(480, 270); //game resolution //640, 360
             Resolution.SetResolution(480, 270, false); //window resolution
 
-
+            IsFixedTimeStep = false;
+            //TargetElapsedTime = TimeSpan.FromMilliseconds(100); /10fps
 
         }
 
@@ -92,7 +94,7 @@ namespace CapCube
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Update(GameTime gameTime)
         {
-            SceneManager.Update();
+            SceneManager.Update(gameTime);
 
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
@@ -120,7 +122,7 @@ namespace CapCube
 
             Resolution.BeginDraw();
             spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, Resolution.getTransformationMatrix());
-            SceneManager.Draw();
+            SceneManager.Draw(gameTime);
             spriteBatch.End();
 
             base.Draw(gameTime);

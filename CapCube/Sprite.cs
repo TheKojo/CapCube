@@ -24,8 +24,11 @@ namespace CapCube
         public int FramesCount = 0;
         private int _frameCounter = 0;
         public bool IsAnimated = false;
-        public int TimeToUpdate = 0; //the higher this is, the slower the animation
-        private int _updateCounter = 0;
+        public float TimeToUpdate = 50; //the higher this is, the slower the animation
+        private float _updateCounter = 0;
+        public bool IsPaused = false;
+        public bool PlayOnce = false;
+        public bool ReverseOnce = false;
 
         public Sprite()
         {
@@ -49,27 +52,43 @@ namespace CapCube
             
         }
 
-        public virtual void Update()
+        public virtual void Update(GameTime gameTime)
         {
-            if (IsAnimated)
+             float ms = (float) gameTime.ElapsedGameTime.TotalMilliseconds;
+            _updateCounter += ms;
+            if (IsAnimated && !IsPaused)
             {
-                if (_updateCounter == TimeToUpdate) {
+                if (_updateCounter >= TimeToUpdate) {
                     _updateCounter = 0;
-                    _frameCounter++;
-                    if (_frameCounter == FramesCount)
+                    if (ReverseOnce)
+                    {
+                        _frameCounter--;
+                        if (_frameCounter == 0)
+                        {
+                            IsPaused = true;
+                            ReverseOnce = false;
+                        }
+                    }
+                    else
+                    {
+                        _frameCounter++;
+                    }
+                    if (_frameCounter == FramesCount && !PlayOnce)
                     {
                         _frameCounter = 0;
                     }
+                    if (_frameCounter == FramesCount-1 && PlayOnce)
+                    {
+                        IsPaused = true;
+                        PlayOnce = false;
+                    }
                     SourceRectangle.X = _frameCounter * SourceRectangle.Width;
-                }
-                else
-                {
-                    _updateCounter++;
                 }
             }
         }
 
-        public virtual void Draw()
+
+        public virtual void Draw(GameTime gameTime)
         {
             GameUtils.SpriteBatch.Draw(Texture, Position, SourceRectangle, Color, Rotation, Origin, Scale, Effect, LayerDepth);
         }
@@ -81,6 +100,7 @@ namespace CapCube
             {
                 SourceRectangle = new Rectangle(0, 0, Texture.Height, Texture.Height);
                 FramesCount = Texture.Width / Texture.Height;
+                IsPaused = false;
             }
             else
             {
@@ -89,11 +109,18 @@ namespace CapCube
             }
             _updateCounter = 0;
             _frameCounter = 0;
+            PlayOnce = false;
+            ReverseOnce = false;
         }
 
         public virtual void SetPosition(float x, float y)
         {
             Position = new Vector2(x, y);
+        }
+
+        public virtual void SetPosition(Vector2 position)
+        {
+            SetPosition(position.X, position.Y);
         }
 
         public float X
@@ -171,6 +198,26 @@ namespace CapCube
             {
                 FramesCount = 1;
             }
+        }
+
+        public void Pause()
+        {
+            IsPaused = true;
+        }
+
+        public void Start()
+        {
+            IsPaused = false;
+        }
+
+        public void PlayAndStop()
+        {
+            PlayOnce = true;
+        }
+
+        public void ReverseAndStop()
+        {
+            ReverseOnce = true;
         }
     }
 }

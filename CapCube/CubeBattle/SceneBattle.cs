@@ -18,6 +18,7 @@ namespace CapCube
         bool APressed = false;
         bool SPressed = false;
         bool DPressed = false;
+        bool SpacePressed = false;
 
         public SceneBattle()
         {
@@ -40,7 +41,7 @@ namespace CapCube
             Battle = new Battle(opponent);
         }
 
-        public override void Update()
+        public override void Update(GameTime gameTime)
         {
             if (Keyboard.GetState().IsKeyDown(Keys.W))
             {
@@ -74,6 +75,14 @@ namespace CapCube
                     Battle.ActiveBattlers[0].Move(1, 0);
                 }
             }
+            else if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            {
+                if (!SpacePressed)
+                {
+                    SpacePressed = true;
+                    Battle.ActiveBattlers[0].BasicAttack();
+                }
+            }
 
             if (Keyboard.GetState().IsKeyUp(Keys.W))
             {
@@ -91,22 +100,28 @@ namespace CapCube
             {
                 DPressed = false;
             }
+            if (Keyboard.GetState().IsKeyUp(Keys.Space))
+            {
+                SpacePressed = false;
+            }
 
             foreach (Battler i in Battle.ActiveBattlers)
             {
-                i.Update();
+                i.Update(gameTime);
             }
+
+            Battle.Field.Update(gameTime);
         }
 
-        public override void Draw()
+        public override void Draw(GameTime gameTime)
         {
-            
-            //SpriteBatch sBatch = GameUtils.SpriteBatch;
             GameUtils.SpriteBatch.Draw(BackgroundTexture, new Vector2(0, 0), Color.White);
             for (int i = 0; i<Battle.ActiveBattlers.Count; i++)
             {
-                Battle.ActiveBattlers[i].Draw();
+                Battle.ActiveBattlers[i].Draw(gameTime);
             }
+
+            Battle.Field.Draw(gameTime);
         }
 
     }

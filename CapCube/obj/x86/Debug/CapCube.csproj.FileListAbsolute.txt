@@ -36,3 +36,5 @@ C:\Users\asant\source\repos\CapCube\CapCube\bin\Windows\x86\Debug\Content\Graphi
 C:\Users\asant\source\repos\CapCube\CapCube\bin\Windows\x86\Debug\Content\Graphics\GUI\shadow.xnb
 C:\Users\asant\source\repos\CapCube\CapCube\bin\Windows\x86\Debug\Content\Graphics\Battlebacks\bg_training2.xnb
 C:\Users\asant\source\repos\CapCube\CapCube\bin\Windows\x86\Debug\Content\Graphics\Battlers\4_Walk.xnb
+C:\Users\asant\source\repos\CapCube\CapCube\bin\Windows\x86\Debug\Content\Graphics\SkillAnimations\projectile4.xnb
+C:\Users\asant\source\repos\CapCube\CapCube\bin\Windows\x86\Debug\Content\Graphics\Battlers\4_AttackFar.xnb
