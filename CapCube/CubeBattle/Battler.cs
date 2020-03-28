@@ -165,7 +165,7 @@ namespace CapCube
 
         public void BasicAttack()
         {
-            if (!IsAttacking)
+            if (!IsAttacking && !IsMoving)
             {
                 Skill attack = new Skill(this, 4);
                 Battle.AddSkill(attack);

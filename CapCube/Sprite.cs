@@ -134,6 +134,16 @@ namespace CapCube
             get { return Position.Y; }
         }
 
+        public int Width
+        {
+            get { return SourceRectangle.Width; }
+        }
+
+        public int Height
+        {
+            get { return SourceRectangle.Height; }
+        }
+
 
         public void DrawSimple()
         {

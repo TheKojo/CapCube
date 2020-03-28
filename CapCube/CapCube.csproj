@@ -41,19 +41,20 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BattlerSprite.cs" />
+    <Compile Include="CubeBattle\BattlerSprite.cs" />
     <Compile Include="CCGender.cs" />
     <Compile Include="CCSpecterState.cs" />
     <Compile Include="CCTile.cs" />
     <Compile Include="CubeBattle\Battler.cs" />
     <Compile Include="CubeBattle\Battle.cs" />
     <Compile Include="CubeBattle\Field.cs" />
+    <Compile Include="CubeBattle\Projectile.cs" />
     <Compile Include="CubeBattle\Tile.cs" />
     <Compile Include="CCElement.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GameUtils.cs" />
     <Compile Include="CCMovement.cs" />
-    <Compile Include="GaugeSprite.cs" />
+    <Compile Include="CubeBattle\GaugeSprite.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CubeBattle\SceneBattle.cs" />
@@ -61,7 +62,7 @@
     <Compile Include="Scene.cs" />
     <Compile Include="SceneManager.cs" />
     <Compile Include="SceneStart.cs" />
-    <Compile Include="Skill.cs" />
+    <Compile Include="CubeBattle\Skill.cs" />
     <Compile Include="Specter.cs" />
     <Compile Include="SpecterSprite.cs" />
     <Compile Include="Sprite.cs" />

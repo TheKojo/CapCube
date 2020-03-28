@@ -11,7 +11,7 @@ namespace CapCube
     {
         Battler User;
         int SkillID;
-        public int Damage;
+        public decimal DamagePercent = 1;
         public bool Done = false;
         public bool IsCasting = true;
         public bool IsDelayed = false;
@@ -19,7 +19,8 @@ namespace CapCube
         public float DelayTime = 200; //time user is stuck after casting
         Sprite Projectile;
         public float ProjectileSpeed = 5;
-        private float _updateCounter;
+        private float _updateCounter = 0;
+        private SpecterSprite _sSprite;
 
         public Skill(Battler user, int skillID)
         {
@@ -32,10 +33,11 @@ namespace CapCube
         public void UseSkill4()
         {
             Projectile = new Sprite("Graphics/SkillAnimations/projectile4");
-            Projectile.SetPosition(User.BattlerSprite.SpecterSprite.Position);
+            _sSprite = User.BattlerSprite.SpecterSprite;
+            Projectile.SetPosition(_sSprite.X + _sSprite.Width/2, _sSprite.Y - _sSprite.Height/2);
             User.BattlerSprite.ChangeState(CCSpecterState.State.AttackFar);
-            User.BattlerSprite.SpecterSprite.TimeToUpdate = CastTime/User.BattlerSprite.SpecterSprite.FramesCount;
-            User.BattlerSprite.SpecterSprite.PlayAndStop();
+            _sSprite.TimeToUpdate = CastTime / _sSprite.FramesCount;
+            _sSprite.PlayAndStop();
         }
 
         public void Update(GameTime gameTime)
@@ -47,23 +49,23 @@ namespace CapCube
                 _updateCounter = 0;
                 IsCasting = false;
                 IsDelayed = true;
-                User.BattlerSprite.SpecterSprite.ReverseAndStop();
-                User.BattlerSprite.SpecterSprite.TimeToUpdate = DelayTime / User.BattlerSprite.SpecterSprite.FramesCount;
-                User.BattlerSprite.SpecterSprite.Start();
+                _sSprite.ReverseAndStop();
+                _sSprite.TimeToUpdate = DelayTime / _sSprite.FramesCount;
+                _sSprite.Start();
 
             }
             else if (_updateCounter >= DelayTime && !IsCasting && IsDelayed) //Delay
             {
                 _updateCounter = 0;
-                User.IsAttacking = false;
                 IsDelayed = false;
                 User.BattlerSprite.ChangeState(CCSpecterState.State.Stand);
-                User.BattlerSprite.SpecterSprite.Start();
+                _sSprite.Start();
+                User.IsAttacking = false;
             }
             else if (!IsCasting)
             {
-                Projectile.SetPosition(Projectile.X + 5, Projectile.Y);
-                if (Projectile.X > 500)
+                Projectile.SetPosition(Projectile.X + ProjectileSpeed, Projectile.Y);
+                if (Projectile.X > 500) // || damaged something
                 {
                     Done = true;
                 }
