@@ -10,11 +10,11 @@ namespace CapCube
     class Field
     {
         Tile[,] tiles = new Tile[3, 9];
-        public List<Skill> ActiveSkills = new List<Skill>();
+        public List<Projectile> ActiveProjectiles = new List<Projectile>();
 
         public void Update(GameTime gameTime)
         {
-            foreach (Skill i in ActiveSkills)
+            foreach (Projectile i in ActiveProjectiles)
             {
                 i.Update(gameTime);
             }
@@ -22,7 +22,7 @@ namespace CapCube
 
         public void Draw(GameTime gameTime)
         {
-            foreach (Skill i in ActiveSkills)
+            foreach (Projectile i in ActiveProjectiles)
             {
                 i.Draw(gameTime);
             }

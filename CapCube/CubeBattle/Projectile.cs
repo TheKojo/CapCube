@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 
-namespace CapCube.CubeBattle
+namespace CapCube
 {
     class Projectile
     {
@@ -17,8 +17,9 @@ namespace CapCube.CubeBattle
         public bool Done = false;
         private float _updateCounter;
 
-        public Projectile()
+        public Projectile(Skill skill)
         {
+            User = skill.User;
             ProjectileSprite = new Sprite("Graphics/SkillAnimations/projectile4");
             Speed = 5;
             DamagePercent = 1;

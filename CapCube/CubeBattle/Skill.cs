@@ -9,7 +9,7 @@ namespace CapCube
 {
     class Skill
     {
-        Battler User;
+        public Battler User;
         int SkillID;
         public decimal DamagePercent = 1;
         public bool Done = false;
@@ -32,9 +32,9 @@ namespace CapCube
         //Larvuzz Basic Attack
         public void UseSkill4()
         {
-            Projectile = new Sprite("Graphics/SkillAnimations/projectile4");
+            //Projectile = new Sprite("Graphics/SkillAnimations/projectile4");
             _sSprite = User.BattlerSprite.SpecterSprite;
-            Projectile.SetPosition(_sSprite.X + _sSprite.Width/2, _sSprite.Y - _sSprite.Height/2);
+            //Projectile.SetPosition(_sSprite.X + _sSprite.Width/2, _sSprite.Y - _sSprite.Height/2);
             User.BattlerSprite.ChangeState(CCSpecterState.State.AttackFar);
             _sSprite.TimeToUpdate = CastTime / _sSprite.FramesCount;
             _sSprite.PlayAndStop();
@@ -62,22 +62,25 @@ namespace CapCube
                 _sSprite.Start();
                 User.IsAttacking = false;
             }
-            else if (!IsCasting)
+            else if (!IsCasting && !Done)
             {
-                Projectile.SetPosition(Projectile.X + ProjectileSpeed, Projectile.Y);
-                if (Projectile.X > 500) // || damaged something
-                {
+                User.Battle.AddProjectile(new Projectile(this));
+                //Projectile.SetPosition(Projectile.X + ProjectileSpeed, Projectile.Y);
+                //if (Projectile.X > 500) // || damaged something
+                //{
                     Done = true;
-                }
+                //}
             }
+
+            //User.Battle.AddProjectile()
         }
 
         public void Draw(GameTime gameTime)
         {
-            if (!IsCasting)
-            {
-                Projectile.Draw(gameTime);
-            }
+            //if (!IsCasting)
+            //{
+                //Projectile.Draw(gameTime);
+            //}
             
         }
 

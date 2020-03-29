@@ -23,6 +23,7 @@ namespace CapCube
         decimal movementCount = 0;
         Vector2 dir = new Vector2(0,0);
         public bool IsAttacking = false;
+        public Skill ActiveSkill;
 
         public Battler(Battle battle, Specter specter, int index)
         {
@@ -67,11 +68,20 @@ namespace CapCube
             }
 
             BattlerSprite.Update(gameTime);
+            if (ActiveSkill != null)
+            {
+                ActiveSkill.Update(gameTime);
+            }
+            
         }
 
         public void Draw(GameTime gameTime)
         {
             BattlerSprite.Draw(gameTime);
+            if (ActiveSkill != null)
+            {
+                ActiveSkill.Draw(gameTime);
+            }
         }
 
         public void Move(int XDistance, int YDistance, CCMovement.Movement movementType = CCMovement.Movement.Normal)
@@ -167,8 +177,8 @@ namespace CapCube
         {
             if (!IsAttacking && !IsMoving)
             {
-                Skill attack = new Skill(this, 4);
-                Battle.AddSkill(attack);
+                IsAttacking = true;
+                ActiveSkill = new Skill(this, 4);
             }
         }
     }

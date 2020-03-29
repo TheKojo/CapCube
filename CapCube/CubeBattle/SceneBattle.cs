@@ -43,45 +43,50 @@ namespace CapCube
 
         public override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.W))
+            if (Keyboard.GetState().IsKeyDown(Keys.W)) //&& !WPressed)
             {
-                if (!WPressed)
-                {
-                    WPressed = true;
-                    Battle.ActiveBattlers[0].Move(0, -1);
-                }
+                WPressed = true;
+                //APressed = false;
+                //SPressed = false;
+                //DPressed = false;
+                //SpacePressed = false;
+                Battle.ActiveBattlers[0].Move(0, -1);
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.A))
+            else if (Keyboard.GetState().IsKeyDown(Keys.A)) //&& !APressed)
             {
-                if (!APressed)
-                {
-                    APressed = true;
-                    Battle.ActiveBattlers[0].Move(-1, 0);
-                }
+                //WPressed = false;
+                APressed = true;
+                //SPressed = false;
+                //DPressed = false;
+                //SpacePressed = false;
+                Battle.ActiveBattlers[0].Move(-1, 0);
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.S))
+            else if (Keyboard.GetState().IsKeyDown(Keys.S)) //&& !SPressed)
             {
-                if (!SPressed)
-                {
-                    SPressed = true;
-                    Battle.ActiveBattlers[0].Move(0, 1);
-                }
+                //WPressed = false;
+                //APressed = false;
+                SPressed = true;
+                //DPressed = false;
+                //SpacePressed = false;
+                Battle.ActiveBattlers[0].Move(0, 1);
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.D))
+            else if (Keyboard.GetState().IsKeyDown(Keys.D)) //&& !DPressed)
             {
-                if (!DPressed)
-                {
-                    DPressed = true;
-                    Battle.ActiveBattlers[0].Move(1, 0);
-                }
+                //WPressed = false;
+                //APressed = false;
+                //SPressed = false;
+                DPressed = true;
+                //SpacePressed = false;
+                Battle.ActiveBattlers[0].Move(1, 0);
             }
-            else if (Keyboard.GetState().IsKeyDown(Keys.Space))
+            else if (Keyboard.GetState().IsKeyDown(Keys.Space)) //&& !SpacePressed)
             {
-                if (!SpacePressed)
-                {
-                    SpacePressed = true;
-                    Battle.ActiveBattlers[0].BasicAttack();
-                }
+                //WPressed = false;
+                //APressed = false;
+                //SPressed = false;
+                //DPressed = false;
+                SpacePressed = true;
+                Battle.ActiveBattlers[0].BasicAttack();
             }
 
             if (Keyboard.GetState().IsKeyUp(Keys.W))

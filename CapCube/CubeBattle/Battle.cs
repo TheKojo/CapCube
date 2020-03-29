@@ -33,9 +33,9 @@ namespace CapCube
             ActiveBattlers[1] = new Battler(this, opponent.Party[0], 1);
         }
 
-        public void AddSkill(Skill skill)
+        public void AddProjectile(Projectile projectile)
         {
-            Field.ActiveSkills.Add(skill);
+            Field.ActiveProjectiles.Add(projectile);
         }
     }
 }
