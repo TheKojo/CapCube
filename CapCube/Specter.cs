@@ -44,7 +44,7 @@ namespace CapCube
             Defense = CalcStat(specterData.Attack);
             SpAtk = CalcStat(specterData.SpAtk);
             SpDef = CalcStat(specterData.SpDef);
-            Speed = CalcStat(specterData.Speed);
+            Speed = CalcSpeed(specterData.Speed);
 
             //Damage = [move power %] * [attack or special attack] * [attack or special attack] / [target defense or special defense]   
         }
@@ -64,6 +64,12 @@ namespace CapCube
         private int CalcStat(int baseStat)
         {
             int statVal = (baseStat * Level) / 50;
+            return statVal;
+        }
+
+        private int CalcSpeed(int baseStat)
+        {
+            int statVal = (int) (baseStat + Math.Sqrt(Level)*3) ; // /30
             return statVal;
         }
 

@@ -13,9 +13,11 @@ namespace CapCube
         private SpecterSprite _sSprite;
         Sprite ProjectileSprite;
         int Speed;
+        int Direction;
         public decimal DamagePercent;
         public bool Done = false;
         private float _updateCounter;
+        Vector2 ActiveTilePos = new Vector2(0, 0);
 
         public Projectile(Skill skill)
         {
@@ -30,11 +32,15 @@ namespace CapCube
         public void Update(GameTime gameTime)
         {
             ProjectileSprite.SetPosition(ProjectileSprite.X + Speed, ProjectileSprite.Y);
+            if (ProjectileSprite.X >=  && Direction == 1)
+            {
+
+            }
+
             if (ProjectileSprite.X > 500) // || damaged something
             {
                 Done = true;
             }
-
         }
 
         public void Draw(GameTime gameTime)

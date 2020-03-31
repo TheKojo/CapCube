@@ -17,6 +17,7 @@ namespace CapCube
         public BattlerSprite BattlerSprite;
         public int BattlerIndex;
         Vector2 TilePos = new Vector2(0, 0);
+        Vector2 ActiveTilePos = new Vector2(0, 0); //for determining hitboxes
         public bool IsMoving = false;
         bool isMovingX = false;
         bool isMovingY = false;
@@ -46,24 +47,32 @@ namespace CapCube
         {
             if (isMovingX)
             {
-                movementCount += (decimal) 1.6 * (decimal) dir.X;
+                movementCount += (decimal) (8.0 * ((double) (Specter.Speed) / 30) / 10 * dir.X);
                 BattlerSprite.SetPosition(GetRealPos(TilePos).X + (float) movementCount, GetRealPos(TilePos).Y);
-                if (movementCount == 80 || movementCount == -80)
+                if (movementCount >= 80 || movementCount <= -80)
                 {
                     SetTilePosition((int)TilePos.Y, (int)(TilePos.X + dir.X));
                     isMovingX = false;
                     movementCount = 0;
                 }
+                if (movementCount >= 40 || movementCount <= -40)
+                {
+                    SetActiveTilePosition((int)TilePos.Y, (int)(TilePos.X + dir.X));
+                }
             }
             else if (isMovingY)
             {
-                movementCount += (decimal) (1.08 * dir.Y);
+                movementCount += (decimal) (5.4 * ((double) (Specter.Speed) / 30) / 10 * dir.Y);
                 BattlerSprite.SetPosition(GetRealPos(TilePos).X, GetRealPos(TilePos).Y + (float) movementCount);
-                if ((movementCount == 54) || (movementCount == -54))
+                if ((movementCount >= 54) || (movementCount <= -54))
                 {
                     SetTilePosition((int)(TilePos.Y + dir.Y), (int) TilePos.X);
                     isMovingY = false;
                     movementCount = 0;
+                }
+                if (movementCount >= 27 || movementCount <= -27)
+                {
+                    SetActiveTilePosition((int)(TilePos.Y + dir.Y), (int)TilePos.X);
                 }
             }
 
@@ -120,10 +129,17 @@ namespace CapCube
         {
             TilePos.X = col;
             TilePos.Y = row;
+            SetActiveTilePosition(row, col);
             Vector2 newPos = GetRealPos(TilePos);
             BattlerSprite.SetPosition(newPos.X, newPos.Y);
             IsMoving = false;
             BattlerSprite.ChangeState(CCSpecterState.State.Stand);
+        }
+
+        public void SetActiveTilePosition(int row, int col)
+        {
+            ActiveTilePos.X = col;
+            ActiveTilePos.Y = row;
         }
 
         public Vector2 GetRealPos(Vector2 tilePos)
